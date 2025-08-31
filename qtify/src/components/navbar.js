@@ -1,7 +1,5 @@
-import * as React from 'react';
 import Box from "@mui/material/Box";
 import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
@@ -53,7 +51,7 @@ const Navbar = () => {
             </Box>
             <SearchBox />
             <Button
-                variant="feedback"
+                variant="contained"
                 sx={{
                     backgroundColor: "black",
                     color: "#2fa343",
