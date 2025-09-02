@@ -1,0 +1,17 @@
+.Carousel .swiper-slide {
+  width: 80%;
+}
+
+/* Tablet: Shows 3 slides */
+@media screen and (min-width: 640px) {
+  .Carousel .swiper-slide {
+    width: 33.33%; /* 100% / 3 */
+  }
+}
+
+/* Desktop: Shows 7 slides */
+@media screen and (min-width: 1024px) {
+  .Carousel .swiper-slide {
+    width: 14.28%; /* 100% / 7 */
+  }
+}

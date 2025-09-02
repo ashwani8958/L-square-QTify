@@ -9,7 +9,9 @@ function App() {
     <div className="App">
       <Navbar/>
       <HeroSection/>
-      <CardContainer name="New Album" />
+      <CardContainer name="Top Album" isAlbum />
+      <CardContainer name="New Album" isAlbum />
+      <CardContainer name="Songs"/>
     </div>
   );
 }
