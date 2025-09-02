@@ -9,6 +9,7 @@ import CardsGrid from "./CardsGrid";
 const CardContainer = ({name, isAlbum})=>{
     
     const [allAlbums, setAllAlbums] = useState([]);
+    const [newAlbums, setNewAlbums] = useState([]);
     const [allSongs, setAllSongs] = useState([]);
     const [allGeners, setAllGeners] = useState([]);
     const [showCarousel, setShowCarousel] = useState(true);
@@ -18,6 +19,11 @@ const CardContainer = ({name, isAlbum})=>{
             getAllAlbums();
         }
         loadAllAlbums();
+
+        const loadNewAlbums = async ()=>{
+            getNewAlbums();
+        }
+        loadNewAlbums();
 
         const loadAllSongs = async()=>{
             getAllSongs();
@@ -42,6 +48,18 @@ const CardContainer = ({name, isAlbum})=>{
         }
     }
 
+    const getNewAlbums = async () => {
+    
+        const url = "https://qtify-backend-labs.crio.do/albums/new"
+        
+        try {
+            const getData = await axios.get(url);
+            setNewAlbums(getData.data);
+        } catch (error) {
+            
+        }
+    }
+    
     const getAllSongs = async () => {
     
         const url = "https://qtify-backend-labs.crio.do/songs"
@@ -96,7 +114,11 @@ const CardContainer = ({name, isAlbum})=>{
                         Show all
                     </Button> : null}
             </Box>
-            { isAlbum ? (showCarousel === true ? <CardsCarousel items={allAlbums} isAlbum/> : <CardsGrid  items={allAlbums} isAlbum/> ) : (<CardsCarousel items={allSongs}/>)}
+            { isAlbum ? 
+                ( name === "Top Album" 
+                    ? (showCarousel === true ?  <CardsCarousel items={allAlbums} isAlbum/> : <CardsGrid  items={allAlbums} isAlbum/> ) 
+                    : (showCarousel === true ?  <CardsCarousel items={newAlbums} isAlbum/> : <CardsGrid  items={newAlbums} isAlbum/> )) 
+                : (<CardsCarousel items={allSongs}/>)}
         </Box>
     );
 
